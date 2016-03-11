@@ -46,6 +46,7 @@ body.landing {
   transition-delay: 0.2s;
 }
 
+
 .point:hover {
   position: relative;
   transition-property: background-color, color;
@@ -54,6 +55,7 @@ body.landing {
   background-color: rgb(58,23,63);
   color: rgb(255,153,255);
 }
+
 
 .point .point-title {
   font-size: 1.25rem;
@@ -65,6 +67,7 @@ body.landing {
   color: rgb(233,50,117);
   font-size: 5rem;
 }
+
 
 
 .ion-music-note:hover {
@@ -93,3 +96,4 @@ body.landing {
   background-color: rgb(58,23,63);
   color: rgb(255,153,255);
 }
+
