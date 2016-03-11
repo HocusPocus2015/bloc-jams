@@ -20,10 +20,11 @@ window.onload = function() {
     
   var sellingPoints = document.getElementsByClassName('selling-points')[0];
   var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
-//  var scrollDistance = this.getBoundingClientRect().top - window.innerHeight + 200;
-  window.addEventListener("scroll", function(event) {
-    if (document.documentElement.scrollTop >= scrollDistance) {
+
+  window.addEventListener('scroll', function(event) {
+    if (document.body.scrollTop >= scrollDistance) {
+    //if (document.documentElement.scrollTop >= scrollDistance) { 
       animatePoints(pointsArray);
     }
   });
-}
+};
