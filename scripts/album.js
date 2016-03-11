@@ -28,6 +28,21 @@ var albumMarconi = {
   ]
 };
 
+var albumQueen = {
+  title: 'A Kind of Magic',
+  artist: 'Queen',
+  label: 'Townhouse Studios',
+  year: '1986',
+  albumArtUrl: 'assets/images/album_covers/15.png',
+  songs: [
+    { title: 'One Vision', duration: '5:10' },
+    { title: 'A Kind of Magic', duration: '4:24' },
+    { title: 'One Year of Love', duration: '4:26'},
+    { title: 'Pain Is So Close to Pleasure', duration: '4:21' },
+    { title: 'Friends Will Be Friends', duration: '4:07'}
+  ]
+};
+ 
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
     '<tr class="album-view-song-item">'
@@ -40,13 +55,13 @@ var createSongRow = function(songNumber, songName, songLength) {
   return template;
 };
 
-var setCurrentAlbum = function(album) {
-  var albumTitle = document.getElementsByClassName('album-view-title')[0];
-  var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-  var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-  var albumImage = document.getElementsByClassName('album-cover-art')[0];
-  var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
+var setCurrentAlbum = function(album) {
   albumTitle.firstChild.nodeValue = album.title;
   albumArtist.firstChild.nodeValue = album.artist;
   albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -61,4 +76,15 @@ var setCurrentAlbum = function(album) {
  
 window.onload = function() {
   setCurrentAlbum(albumPicasso);
+  
+  var albums = [albumPicasso, albumMarconi, albumQueen];
+  var index = 0;
+  
+  albumImage.addEventListener("click", function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+    if (index == albums.length) {
+      index = 0;
+    }
+  });
 };
