@@ -71,6 +71,9 @@ var findParentByClassName = function (element, songItemNumberClass) {
     }
   return targetParent;
   }
+  if (targetParent = undefined || null) {
+    alert("No parent found");
+  }
 };
 
 //getSongItem() Method
