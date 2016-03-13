@@ -168,6 +168,22 @@ var previousSong = function() {
   $lastSongNumberCell.html(lastSongNumber);
 };
 
+var togglePlayFromPlayerBar = function() {
+  var playingCell = getSongNumberCell(currentlyPlayingSongNumber);
+  if(currentSoundFile.isPaused()) {
+    $(this).html(playerBarPauseButton);
+    $playingCell.html(pauseButtonTemplate);
+    currentSoundFile.play();
+    updatePlayerBarSong();
+    $('.main-controls .play-pause').html(playorPauseButton);
+  }
+  else if (currentSoundFile) {
+    $(this).html(playerBarPlayButton);
+    $playingCell.html(playButtonTemplate);
+    currentSoundFile.pause();
+    updatePlayerBarSong();
+  }
+};
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
@@ -182,11 +198,11 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
-
+var $playOrPauseButton = $('.main-controls .play-pause');
 
 $(document).ready(function() {
   setCurrentAlbum(albumPicasso);
   $previousButton.click(previousSong);
   $nextButton.click(nextSong);
+  $playOrPauseButton.click(togglePlayFromPlayerBar);
 });
-
